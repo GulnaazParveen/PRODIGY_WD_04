@@ -1,0 +1,714 @@
+/* @import "./style"; */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-primary: #191d2b;
+    --color-secondary: #27AE60;
+    --color-white: #FFFFFF;
+    --color-black: #000;
+    --color-grey0: #f8f8f8;
+    --color-gray1: #dbe1e8;
+    --color-gray2: #b2becd;
+    --color-gray3: #6c7983;
+    --color-grey4: #454e56;
+    --color-grey5: #2a2e35;
+    --color-grey6: #12181b;
+    --br-sm-2: 14px;
+    --box-shadow: 0 3px 15px rgba(0, 0, 0.3);
+}
+
+body {
+    background-color: var(--color-primary);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-white);
+    transition: all .4s ease-in-out;
+    /* overflow: hidden; */
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+}
+
+section {
+    min-height: 100vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 3rem 9rem;
+}
+
+header {
+    min-height: 100vh;
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+.section {
+    transform: translateY(-100%) scale(0);
+    transition: all .4s ease-in-out;
+    background-color: var(--color-primary);
+}
+
+.sec1,
+.sec2,
+.sec3,
+.sec4 {
+    display: none;
+    transform: translateY(0) scale(1);
+}
+
+.active { 
+    display: block;
+    animation: scaleAnim 1s ease-in-out;
+}
+
+@keyframes scaleAnim {
+    0% {
+        transform: translateY(-100%) scaleY(0);
+    }
+
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+.controls {
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    right: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+}
+
+.active-btn {
+    background-color: var(--color-secondary) !important;
+    transition: all .4s ease-in-out;
+}
+
+.active-btn i {
+    color: #ffffff !important;
+}
+
+.control {
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.7rem 0;
+    box-shadow: var(--box-shadow);
+}
+
+.control i {
+    font-size: 1.2rem;
+    pointer-events: none;
+    color: var(--color-gray2);
+}
+
+/* header content */
+.header-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+
+}
+
+
+.left-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.h-shape {
+    transition: all .4s ease-in-out;
+    width: 65%;
+    height: 700px;
+    background-color: var(--color-secondary);
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* is div ko image ke piche dalene ke liye */
+    z-index: -1;
+    clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+}
+
+.image {
+    border-radius: var(--br-sm-2);
+    height: 600px;
+    width: 68%;
+    margin-top: 3rem;
+    margin-left: 4rem;
+    background-color: var(--color-black);
+    transition: all .4s ease-in-out;
+
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .4s ease-in-out;
+    filter: grayscale(100%);
+
+    &:hover {
+        filter: grayscale(0);
+    }
+}
+
+.right-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-right: 10rem;
+
+}
+
+.name {
+    text-transform: capitalize;
+    font-size: 3rem;
+}
+
+.name span {
+    color: var(--color-secondary);
+
+}
+
+p {
+    margin: 1.5rem 0;
+    line-height: 1.5rem;
+}
+
+/* independent components */
+.btn-con {
+    display: flex;
+    align-self: flex-start;
+}
+
+.main-btn {
+    border-radius: 30px;
+    color: inherit;
+    font-weight: 600;
+    position: relative;
+    border: 1px solid var(--color-secondary);
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.btn-text {
+    padding: 0 .2rem;
+}
+
+/* span ke andar i span ko background color dene se background color hoga  aur display flex q ki icon center pr aa jaye*/
+.btn-icon {
+    background-color: var(--color-secondary);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 50%;
+    padding: 1rem;
+
+}
+
+.main-title {
+    text-align: center;
+}
+
+.main-title h2 {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: 700;
+
+}
+
+.main-title h2 span {
+    color: var(--color-secondary);
+}
+
+/* .bg-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--color-grey5);
+    transition: all .4s ease-in-out;
+   z-index: -1;
+   transform: translate(-50%,-50%);
+   font-weight: 800;
+   font-size: 6.3rem;
+} */
+/* about */
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem 15rem 0 0;
+    margin: 0 2rem 0 -3rem;
+}
+
+.left-about {
+    padding-right: 5rem;
+
+}
+
+.left-about h4 {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.left-about p {
+    line-height: 2rem;
+    padding: 1rem;
+}
+
+.right-about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+}
+
+.right-about .about-item {
+    border: 1px solid var(--color-grey5);
+    border-radius: 5px;
+    transition: all .4s ease-in-out;
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        cursor: default;
+        border: 1px solid var(--color-secondary);
+        transform: translateY(-5px);
+        box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.32);
+    }
+}
+
+.right-about .about-item .abt-text {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.large-text {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.small-text {
+    padding-left: 3rem;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: var(--color-gray1);
+    letter-spacing: 2px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 15px;
+        width: 2rem;
+        height: 2px;
+        width: 2rem;
+        background-color: var(--color-grey5);
+
+    }
+}
+
+.about-status {
+    padding-bottom: 4rem;
+}
+
+.progress-bars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+    margin: 0 15rem 0 -5rem;
+}
+
+.progress-bars .progress-bar {
+    display: flex;
+    flex-direction: column;
+}
+
+.progress-bar .prog-title {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.prog-title .progress-con {
+    display: flex;
+    align-items: center;
+
+}
+
+.prog-text {
+    color: var(--color-gray2);
+}
+
+.progress {
+    width: 100%;
+    height: .45rem;
+    background-color: var(--color-grey4);
+    margin-left: 1rem;
+    position: relative;
+}
+
+.progress span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--color-secondary);
+    transition: all .4s ease-in-out;
+}
+
+.progress .c {
+    width: 70%;
+}
+
+.progress .ht {
+    width: 80%;
+}
+
+.progress .css {
+    width: 70%;
+}
+
+.progress .js {
+    width: 50%;
+}
+
+.status-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    padding: 3.5rem;
+    position: relative;
+
+    &::before {
+        content: '';
+        left: 50%;
+        top: 0;
+        width: 40%;
+        height: 1px;
+        background: var(--color-grey5);
+        transform: translateX(-50%);
+    }
+}
+
+/* portfolios */
+.port-text {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.portfolios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    /* margin-top: 3rem; */
+    margin: 3rem 15rem 0 -6rem;
+
+}
+
+
+.portfolio-item {
+    position: relative;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hover-item {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secondary);
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* hide div hover karne wala div with help  of opacity  */
+    opacity: 0;
+    transform: scale(0);
+    transition: all .4s ease-in-out;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--color-white);
+    /* margin: 6rem 0 1rem 0; */
+    margin-bottom: 1.5rem;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    /* &:hover{
+        background-color:var(--color-white);
+        i{
+            color:var(--color-primary);
+        }
+    } */
+}
+
+.icon i {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    color: var(--color-white);
+}
+
+/* jaise hi hover kru potfolioa-item vaise hi hover-item display ho ke (opacity 1 scale(1)) kar ke v block ko display karwaya skte h */
+.portfolio-item:hover .hover-item {
+    opacity: 1;
+    transform: scale(1);
+}
+/* mai khud se diya */
+.contact-container {
+    margin-left: -3rem;
+}
+/* width v mai set ki */
+.contect-content-con {
+    width: 78%;
+    display: flex;
+    padding: 3.5rem 0 0 0;
+}
+
+.left-contact {
+    flex: 2;
+}
+.left-contact h4{
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.left-contact p {
+    margin: 1rem 0 !important;
+    line-height: 2rem;
+}
+
+.contact-item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.contact-item p{
+    margin: .3rem 0 !important;
+    padding: 0 !important;
+}
+.contact-item .icon{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+}
+.icon i{
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+.right-contact {
+    flex: 3;
+    margin-left: 3rem;
+}
+
+.input-control {
+    margin: 1.5rem 0;
+}
+
+input,
+textarea {
+    border-radius: 30px;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    padding: .8rem 1.1rem;
+    outline: none;
+    border: none;
+    width: 100%;
+    background-color: var(--color-grey5);
+    color: var(--color-white);
+    resize: none;
+}
+
+.i-c-2 {
+    display: flex;
+
+    :last-child {
+        margin-left: 1.5rem;
+    }
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contact-icon {
+    display: flex;
+    margin: 2rem 0 0 0;
+}
+
+.contact-icon a {
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    background-color: var(--color-grey5);
+    cursor: pointer;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0.4rem;
+    transition: all .4s ease-in-out;
+}
+
+.contact-icon a:hover {
+    background-color: var(--color-secondary);
+
+    i {
+        color: var(--color-primary);
+    }
+}
+
+.contact-icon a i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+@media screen and (max-width:600px){
+    header{
+        padding: 0;
+    }
+    .right-header{
+        padding: 0 !important;
+    }
+    .header-content{
+        grid-template-columns: 1fr;
+        padding: 3rem;
+    }
+    .left-header .h-shape{
+        display: none;
+    }
+    /* grid row 1 ka matlb h div ko kis position pr cahte h */
+    .right-header{
+        grid-row: 1;
+        width: 90%;
+        margin: 0 auto;
+
+    }
+    .name{
+        font-size: 2.5rem !important;
+    }
+    .header-content,.left-header,.image{
+        margin: 0 auto;
+        width: 90%;
+    }
+    .main-title{
+        margin: 0 4rem 0 -5rem;
+        text-align: left;
+    }
+    .about-container{
+        grid-template-columns: 1fr;
+        
+    }
+    .left-about{
+        padding-right: 0;
+    }
+    .left-about p{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .about-status .progress-bars{
+        grid-template-columns: 1fr;
+    }
+    .right-about{
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem;
+    }
+    .sec2{
+        padding: 2rem 6.5rem !important;
+    }
+    .portfolios{
+        grid-template-columns: 1fr;
+        /* taki div container like portfolios div niche se space mile */
+        padding-bottom: 6rem;
+    }
+    .port-text{
+        padding-right: 13rem;
+    }
+    
+    .contect-content-con{
+        flex-direction: column;
+    }
+    /* .left-contact{
+        width: 100%;
+    } */
+    .right-contact{
+        margin-left: -5rem;
+        margin-top: 2.5rem;
+        /* width: 100%; */
+    }
+    .sec4{
+        width: 84%;
+    }
+    .right-contact .i-c-2{
+        flex-direction: column;
+       
+    }
+    .i-c-2 :last-child{
+        margin-left: 0;
+        margin-top: 1.5rem;
+    }
+    /* display flex bana ne ki jarurat nhi h bs direction change karna cahti hu so */
+    .controls{
+        top: auto;
+        bottom: -1rem;
+        flex-direction: row;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        
+    }
+    .control{
+        margin: 1rem .3rem;
+    }
+}
